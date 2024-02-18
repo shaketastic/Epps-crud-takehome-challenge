@@ -11,3 +11,6 @@ app.use(cors());
 // TODO: Implement health check route
 
 module.exports = app;
+
+
+// Resources: https://www.geeksforgeeks.org/rest-api-using-the-express-to-perform-crud-create-read-update-delete/
