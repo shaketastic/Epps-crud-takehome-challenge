@@ -26,7 +26,7 @@ const getId = async (req, res) => {
   try {
     const application = await getApplicationById(id);
     if (!application) {
-      return res.status(404).json({ error: "404 Not Found" });
+      return res.status(404).json({ error: "404 Application not found" });
     }
     res.status(200).json({ data: application });
   } catch (error) {
@@ -46,7 +46,9 @@ const create = async (req, res) => {
     // check if status is valid
     if (!applicationStatuses[status]) {
       const allowed = Object.keys(applicationStatuses).join(", ");
-      return res.status(400).json({ error: `Bad request. Allowed status are: ${allowed}` });
+      return res
+        .status(400)
+        .json({ error: `Bad request. Allowed status options are: ${allowed}` });
     }
     // create a new application
     const createdApplication = await createApplication(newApp);
@@ -63,27 +65,41 @@ const update = async (req, res) => {
   try {
     const errors = validateApp(updatedApplication);
     if (errors.length > 0) {
-        return res.status(400).json({ error: errors.join(", ") });
+      return res.status(400).json({ error: errors.join(", ") });
     }
     if (!applicationStatuses[status]) {
-        const allowed = Object.keys(applicationStatuses).join(", ");
-        return res.status(400).json({ error: `Bad request. Allowed status are: ${allowed}` });
-        }
-        const application = await updateApplication(id, updatedApplication);
-        if(!application) {
-            return res.status(404).json({ error: "404 Not Found" });
-        }
-        res.status(200).json({ data: application });
-    } catch (error) {
-        res.status(500).json({ error: "500 Internal Server Error" });
+      const allowed = Object.keys(applicationStatuses).join(", ");
+      return res
+        .status(400)
+        .json({ error: `Bad request. Allowed status options are: ${allowed}` });
     }
+    const application = await updateApplication(id, updatedApplication);
+    if (!application) {
+      return res.status(404).json({ error: "404 Application not found" });
+    }
+    res.status(200).json({ data: application });
+  } catch (error) {
+    res.status(500).json({ error: "500 Internal Server Error" });
+  }
 };
 
+const remove = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const application = await deleteApplication(id);
+    if (!application) {
+      return res.status(404).json({ error: "404 Application not found" });
+    }
+    res.status(200).json({ data: application });
+  } catch (error) {
+    res.status(500).json({ error: "500 Internal Server Error" });
+  }
+};
 
 module.exports = {
-    getAll,
-    getId,
-    create,
-    update,
-    delete
+  getAll,
+  getId,
+  create,
+  update,
+  remove,
 };
