@@ -85,8 +85,16 @@ const update = async (req, res) => {
 
 const remove = async (req, res) => {
   const { id } = req.params;
+
+  // check if the id is a valid number and a positive integer, gretaer than 0
+  if (isNaN(id) || parseInt(id) <= 0 || !Number.isInteger(parseFloat(id))) {
+    return res
+      .status(400)
+      .json({ error: "Invalid ID. ID must be a positive integer." });
+  }
+
   try {
-    const application = await deleteApplication(id);
+    const application = await deleteApplication(parseInt(id));
     if (!application) {
       return res.status(404).json({ error: "404 Application not found" });
     }
