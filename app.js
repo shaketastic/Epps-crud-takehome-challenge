@@ -21,3 +21,4 @@ module.exports = app;
 // Resources:
 // - https://www.geeksforgeeks.org/rest-api-using-the-express-to-perform-crud-create-read-update-delete/
 // - https://medium.com/@rachealkuranchie/how-to-build-a-crud-api-with-express-js-and-typescript-21c7c66e5296
+// - https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400

@@ -1,4 +1,4 @@
-# CRUD back end takehome challenge
+<!-- # CRUD back end takehome challenge
 
 Imagine you are a software engineer applying for your first job. You are going to create a back end application so you can keep track of the jobs you apply for and their current status.
 
@@ -49,12 +49,12 @@ As a client, I should be able to:
     - A title
     - Your name
     - Detailed, working step by step instructions on how to run the server locally
-    - A complete list of methods + routes that your API supports (ex: `GET /students/:id, PUT /students/:id`) 
+    - A complete list of methods + routes that your API supports (ex: `GET /students/:id, PUT /students/:id`)
 
 ## How you'll be evaluated
 In order to pass the interview, you must implement ALL of the user stories and other requirements EXACTLY, with no bugs or other problems.
 
-Make sure you read this README and the [starter code](#starter-code) carefully. 
+Make sure you read this README and the [starter code](#starter-code) carefully.
 
 You will receive feedback and have one opportunity to correct any issues.
 
@@ -66,7 +66,41 @@ You can see in this file that a job application has several properties: `id` (se
 
 In the file `/queries/jobApplicationsQueries.js` there are already some methods that can create, read, update, or delete the applications in the JSON file. You should understand how these methods work, what they return, and how you'll use them in your code. You should not need to modify them at all.
 
-Notice that the query methods are `async` functions, just like they would have to be if they queried an actual database. **Do not** change them to non-async functions.
+Notice that the query methods are `async` functions, just like they would have to be if they queried an actual database. **Do not** change them to non-async functions. -->
 
+# CRUD Application Job API
 
+Sherry 'Shareeka' Epps
 
+## How To Run The Server Locally
+
+Follow these steps:
+
+1. Install Node.js and Node Package Manager (npm) if not already installed.
+2. Clone this repo on your machine.
+3. Navigate to the project directory
+4. Install dependencies by running : npm install
+5. Start server by running : npm start
+6. Server running locally on http://localhost:9000.
+
+## API Routes
+
+### GET /applications
+
+- Description: get all job applications
+
+### GET /applications/:id
+
+- Description: get a specific job app by ID.
+
+### POST /applications
+
+- Description: create new job application
+
+### PUT /applications/:id
+
+- Description: update existing job app by ID.
+
+## DELETE /applications/:id
+
+- Description: Delete job app by ID.
