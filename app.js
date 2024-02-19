@@ -5,10 +5,16 @@ const app = express();
 
 // TODO: Add application-wide middleware
 app.use(cors());
+app.use(express.json()); // parse JSON
 
 // TODO: Add controller(s)
+const applicationController = require("./controllers/applicationController");
+app.use("/applications", applicationController);
 
 // TODO: Implement health check route
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "Status is Okay" });
+});
 
 module.exports = app;
 
