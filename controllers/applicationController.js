@@ -6,7 +6,7 @@ const {
   createApplication,
   updateApplication,
   deleteApplication,
-} = require("./queries/jobApplicationsQueries");
+} = require("../queries/jobApplicationsQueries");
 
 const { validateApp } = require("../middleware/validationMiddleware");
 // const { validateId } = require('../middleware/validationMiddleware');
