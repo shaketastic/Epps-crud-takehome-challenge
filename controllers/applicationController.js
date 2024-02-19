@@ -9,7 +9,6 @@ const {
 } = require("../queries/jobApplicationsQueries");
 
 const { validateApp } = require("../middleware/validationMiddleware");
-// const { validateId } = require('../middleware/validationMiddleware');
 const { applicationStatuses } = require("../constants");
 
 const getAll = async (req, res) => {
